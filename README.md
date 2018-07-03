@@ -1,28 +1,38 @@
 # CSV 突合したい
 
-## 手順
+## 手動で実施する場合
 
-windows で powershell を立ち上げる。初回のみ下記コマンドが必要。
+1.  powershell を立ち上げる
+2.  対象のディレクトリまで移動
+
+```powershell
+cd C:¥User¥~~ # 対象のディレクトリ
+```
+
+3.  下記コマンドを順次打ち込む
+
+```powershell
+$A = Get-Content user1.csv #ここは比較したいファイル名１
+$B = Get-Contetn user2.csv #ここは比較したいファイル名２
+Compare-Object $A $B
+```
+
+4.  結果を見る。
+
+## 自動で実行する場合
+
+1.  おなじ
+2.  おなじ
+3.  初回のみ下記コマンド
 
 ```powershell
 # 初回のみ
 Set-ExecutionPolicy RemoteSigned
 ```
 
-対象のディレクトリに移動して、スクリプトを実行
+4.  実行
 
 ```powershell
-# 対象のスクリプトをおいたディレクトリへ移動
-cd C:¥Users¥~~
-# 実行
+# 中身は手動のと一緒
 .¥csv_check.ps1
 ```
-
-csv ファイルを読み込んで、result.csv が生成される。
-
-## csv_check.ps1 の概要
-
-- とりあえずサンプルを落としてきた。
-- `Start csv check.`から上は落ちてたものそのまま
-- キー項目で結合 `-Where { $args[0].employeeID -eq $args[1].Name }`
-- 出力対象の項目を選択 `Select-Object`
