@@ -1,38 +1,14 @@
 # CSV 突合したい
 
-## 手動で実施する場合
+# ソースコード
 
-1.  powershell を立ち上げる
-2.  対象のディレクトリまで移動
+- [こちら](https://gist.githubusercontent.com/watabean/1f6601ad825fed3d74ee12ca48b21008/raw/check_csv.vb)においてあります。
 
-```powershell
-cd C:¥User¥~~ # 対象のディレクトリ
-```
+# 概要
 
-3.  下記コマンドを順次打ち込む
-
-```powershell
-$A = Get-Content user1.csv #ここは比較したいファイル名１
-$B = Get-Contetn user2.csv #ここは比較したいファイル名２
-Compare-Object $A $B
-```
-
-4.  結果を見る。
-
-## 自動で実行する場合
-
-1.  おなじ
-2.  おなじ
-3.  初回のみ下記コマンド
-
-```powershell
-# 初回のみ
-Set-ExecutionPolicy RemoteSigned
-```
-
-4.  実行
-
-```powershell
-# 中身は手動のと一緒
-.¥csv_check.ps1
-```
+1.  1 つめの CSV の主キーで 2 つめの CSV の主キーを検索
+2.  同じ主キーの行があったら、各項目を比較
+3.  内容が異なっている項目は 1 つめの CSV と 2 つめの CSV の対象カラムを色付けする
+4.  内容が異なっている項目がひとつでもあった場合は、result シートに 1 つめの CSV のデータ行、2 つめの CSV のデータ行を連続して出す
+5.  全件検索した際に、片側に主キーが見つからなかったデータ行を result シートに出す
+6.  使って見たほうがたぶんはやい、、
